@@ -1,5 +1,6 @@
 {
   "projects": {
-    "staging": "react-native-demo-aa0d6"
+    "staging": "react-native-demo-aa0d6",
+    "default": "react-native-demo-aa0d6"
   }
 }
