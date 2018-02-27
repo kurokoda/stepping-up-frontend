@@ -4,9 +4,14 @@ import {withRouter} from 'react-router-dom';
 import firebase from '../../../shared/firebase';
 
 class AboutView extends Component {
+
+  // Props -------------------------------------------------------------
+
   static propTypes = {};
 
   static defaultProps = {};
+
+  // React -------------------------------------------------------------
 
   constructor(props) {
     super(props);
@@ -16,17 +21,12 @@ class AboutView extends Component {
   }
 
   componentWillMount() {
-    let messages = firebase.database().ref('messages').orderByKey().limitToLast(100);
-    messages.on('child_added', snapshot => {
-      let message = {text: snapshot.val(), id: snapshot.key};
-      this.setState({messages: [message].concat(this.state.messages)});
+    let messageRefs = firebase.database().ref('messages').orderByKey().limitToLast(100);
+    let messages    = [];
+    messageRefs.on('child_added', message => {
+      messages.push({text: message.val(), id: message.key});
+      this.setState({messages});
     })
-  }
-
-  onSubmit = (event) => {
-    firebase.database().ref('messages').push(this.input.value);
-    this.input.value = '';
-    event.preventDefault();
   }
 
   render() {
@@ -35,29 +35,41 @@ class AboutView extends Component {
 
     return (
       <section style={styles.container}>
-        <form onSubmit={this.onSubmit}>
-          <input type="text" ref={ el => this.input = el }/>
-          <input type="submit"/>
-          <ul>
-            {
-              this.state.messages.map(message => <li key={message.id}>{message.text}</li>)
-            }
-          </ul>
-        </form>
         <div style={styles.content}>
           <span style={styles.text}>{textString}</span>
+          <form onSubmit={this.onSubmit}>
+            <input type="text" ref={ el => this.input = el }/>
+            <input type="submit"/>
+            {
+              this.state.messages.map((message) => {
+                return <p key={message.id}>{message.text}</p>
+              })
+            }
+          </form>
           <Button onClick={this.onClick}>{buttonTitle}</Button>
         </div>
       </section>
     );
   }
 
+  // Non-React -------------------------------------------------------------
+
+  onSubmit = (event) => {
+    firebase.database().ref('messages').push(this.input.value);
+    this.input.value = '';
+    event.preventDefault();
+  };
+
   onClick = () => {
     this.props.history.push('/')
   }
 }
 
+// Exports -------------------------------------------------------------
+
 export default withRouter(AboutView);
+
+// Styles -------------------------------------------------------------
 
 const styles = {
   container: {
