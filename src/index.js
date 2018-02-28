@@ -3,8 +3,9 @@ import {render} from 'react-dom';
 import {Provider} from 'react-redux';
 import {BrowserRouter as Router} from 'react-router-dom';
 import {PersistGate} from 'redux-persist/es/integration/react';
-import Routes from './_web/routes/index';
-import configureStore from './shared/store/index';
+import Routes from './_web/routes';
+import HeaderContainer from './_web/views/layout/container/HeaderContainer';
+import configureStore from './shared/store';
 
 const {persistor, store} = configureStore();
 
@@ -14,10 +15,12 @@ const Root = () => (
   <Provider store={store}>
     <PersistGate persistor={persistor}>
       <Router>
-        <Routes />
+        <HeaderContainer>
+          <Routes/>
+        </HeaderContainer>
       </Router>
     </PersistGate>
   </Provider>
 );
 
-render(<Root />, rootElement);
+render(<Root/>, rootElement);
