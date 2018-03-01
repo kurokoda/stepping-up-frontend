@@ -2,12 +2,12 @@ import React from 'react';
 import {withRouter} from 'react-router-dom';
 
 const ResetPasswordView = () => {
-  <section style={styles.container}>
+  return (<section style={styles.container}>
     <div style={styles.content}>
       ResetPasswordView
     </div>
-  </section>
-}
+  </section>);
+};
 
 // Exports -------------------------------------------------------------
 
