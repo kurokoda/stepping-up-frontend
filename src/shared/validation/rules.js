@@ -10,7 +10,7 @@ export const required = (text) => {
 
 export const mustMatch = (field, fieldName) => {
   return (text, state) => {
-    return state[field] == text ? null : ErrorMessages.mustMatch(fieldName);
+    return state[field] === text ? null : ErrorMessages.mustMatch(fieldName);
   };
 };
 

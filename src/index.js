@@ -4,22 +4,28 @@ import {Provider} from 'react-redux';
 import {BrowserRouter as Router} from 'react-router-dom';
 import {PersistGate} from 'redux-persist/es/integration/react';
 import Routes from './_web/routes';
-import HeaderContainer from './_web/views/layout/container/HeaderContainer';
-import DevTools from './shared/devTools';
+import HeaderFooterContainer from './_web/views/layout/container/HeaderFooterContainer';
+import DevTools from './shared/components/devTools';
+import Loading from './shared/components/Loading';
+import config from './shared/config';
 import configureStore from './shared/store';
 
 const {persistor, store} = configureStore();
 
 const rootElement = document.getElementById('root');
 
+console.log('base: ', process.env.REACT_APP_REACT_WEB_EXPRESS_API_BASE_URL);
+
 const Root = () => (
   <Provider store={store}>
-    <PersistGate persistor={persistor}>
+    <PersistGate loading={<Loading/>} persistor={persistor}>
       <Router>
-        <HeaderContainer>
-          <DevTools/>
+        <HeaderFooterContainer>
+          { config.SHOW_DEV_TOOLS && (
+            <DevTools/>
+          )}
           <Routes/>
-        </HeaderContainer>
+        </HeaderFooterContainer>
       </Router>
     </PersistGate>
   </Provider>

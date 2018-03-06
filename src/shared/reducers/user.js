@@ -1,13 +1,13 @@
 import Immutable from 'immutable';
-import * as ActionType from '../actions/user';
+import * as ActionTypes from '../actions/user';
 
 const defaultState = null;
 
 export default function (state = defaultState, action) {
   switch (action.type) {
-    case ActionType.LOG_IN:
-      return Immutable.fromJS(action.payload);
-    case ActionType.LOG_OUT:
+    case ActionTypes.USER_LOGIN_SUCCESS:
+      return Immutable.fromJS(action.response);
+    case ActionTypes.USER_LOGOUT:
       return null;
     default:
       return state;

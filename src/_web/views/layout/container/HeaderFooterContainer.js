@@ -1,24 +1,35 @@
+import {css, StyleSheet} from 'aphrodite';
 import React, {Component} from 'react';
+import {Alert} from 'react-bootstrap';
+import {connect} from 'react-redux';
 import {withRouter} from 'react-router-dom';
-import Footer from '../footer';
-import Header from '../header';
+import {logout} from '../../../../shared/actions/user';
+import Footer from '../../layout/footer';
+import Header from '../../layout/header';
 
 
-class HeaderFooterContainer extends Component {
-
-  // Props -------------------------------------------------------------
-
-  static propTypes = {};
-
-  static defaultProps = {};
+class HeaderContainer extends Component {
 
   // React -------------------------------------------------------------
 
   render() {
+    const alert = this.props.app.get('alert');
     return (
-      <section>
-        <Header/>
-        <div style={styles.container}>
+      <section id='app-container' className={css(styles.container)}>
+        {/*<Modal config={this.props.app.get('modal')}/>*/}
+        <div id='header-container' className={css(styles.header)}>
+          <Header
+            logout={this.props.logout}
+            user={this.props.user}/>
+        </div>
+        { alert && (
+          <Alert bsStyle="warning">
+            <strong>{alert.get('strong')}</strong> {alert.get('msg')}
+          </Alert>
+        )}
+        <div
+          id='main-container'
+          className={css(styles.main)}>
           {this.props.children}
         </div>
         <Footer/>
@@ -27,14 +38,42 @@ class HeaderFooterContainer extends Component {
   }
 }
 
+// Props -------------------------------------------------------------
+
+HeaderContainer.propTypes = {};
+
+HeaderContainer.defaultProps = {};
+
 // Exports -------------------------------------------------------------
 
-export default withRouter(HeaderFooterContainer);
+const mapStateToProps = (state) => {
+  return {
+    user: state.user,
+    app : state.app,
+  };
+}
+
+const mapDispatchToProps = {
+  logout
+}
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(HeaderContainer));
 
 // Styles -------------------------------------------------------------
 
-const styles = {
+const styles = StyleSheet.create({
   container: {
-    minHeight: 'calc(500px - 400px)'
+    display : 'flex',
+    flexFlow: 'column',
   },
-}
+
+  header: {},
+
+  main: {
+    minHeight: '600px'
+  },
+
+  footer: {
+    flex: '0 1 40px',
+  },
+});

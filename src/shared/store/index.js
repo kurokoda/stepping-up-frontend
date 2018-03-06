@@ -2,8 +2,8 @@ import {applyMiddleware, compose, createStore} from 'redux';
 import {persistCombineReducers, persistStore} from 'redux-persist';
 import storage from 'redux-persist/es/storage'; // default: localStorage if web, AsyncStorage if react-native
 import thunk from 'redux-thunk';
-import DevTools from '../../shared/devTools';
 import api from '../../shared/middlewares/api';
+import DevTools from '../components/devTools';
 import reducers from '../reducers';
 
 
@@ -16,7 +16,7 @@ const configureStore = () => {
     store.getState();
   };
   const persistor   = persistStore(store, null, getState);
-
+  persistor.purge();
   return {persistor, store};
 };
 

@@ -1,24 +1,23 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {withRouter} from 'react-router-dom';
 
-class Footer extends Component {
-
-  // Props -------------------------------------------------------------
-
-  static propTypes = {};
-
-  static defaultProps = {};
+const Footer = ({...props}) => {
 
   // React -------------------------------------------------------------
 
-  render() {
-    return (
-      <section style={styles.container}>
-        <span>Footer</span>
-      </section>
-    );
-  }
+  return (
+    <footer id='footer' style={styles.container}>
+      <h6>© Copyright 2016, American Psychiatric Association Foundation. All rights reserved.</h6>
+      <h6>Please use the feedback form on the top-right of the page to submit comments and suggestions about the application.</h6>
+    </footer>
+  );
 }
+
+// Props -------------------------------------------------------------
+
+Footer.propTypes = {};
+
+Footer.defaultProps = {};
 
 // Exports -------------------------------------------------------------
 
@@ -28,8 +27,9 @@ export default withRouter(Footer);
 
 const styles = {
   container: {
-    backgroundColor: 'black',
-    height         : '100px',
-    width          : '100%',
+    backgroundColor: 'white',
+    borderTop      : '1px solid #CCCCCC',
+    padding        : '20px 0',
+    textAlign      : 'center',
   },
-}
+};

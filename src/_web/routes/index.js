@@ -1,59 +1,116 @@
 import React from 'react';
 import {Route, Switch} from 'react-router-dom';
-import LoginComponent from '../../_web/views/content/auth/login';
-import LogoutComponent from '../../_web/views/content/auth/logout';
-import ResetPasswordComponent from '../../_web/views/content/auth/resetPassword';
-import SignupComponent from '../../_web/views/content/auth/signup';
-import {AUTH, PAGES} from '../../shared/constants/pages';
 //
-import AboutContainer from '../../shared/containers/AboutContainer';
-import LoginContainer from '../../shared/containers/auth/LoginContainer';
-import LogoutContainer from '../../shared/containers/auth/LogoutContainer';
-import ResetPasswordContainer from '../../shared/containers/auth/ResetPasswordContainer';
-import SignupContainer from '../../shared/containers/auth/SignupContainer';
-import HomeContainer from '../../shared/containers/HomeContainer';
-//
-import AboutComponent from '../views/content/pages/about';
-import HomeComponent from '../views/content/pages/home';
+import LoginComponent from '../../_web/views/pages/user/login';
+import LogoutComponent from '../../_web/views/pages/user/logout';
+import ProfileComponent from '../../_web/views/pages/user/profile';
+import ResetPasswordComponent from '../../_web/views/pages/user/resetPassword';
+import SignupAdminComponent from '../../_web/views/pages/user/signupAdmin';
+import SignupUserComponent from '../../_web/views/pages/user/signupUser';
+import PAGES from '../../shared/constants/page';
+import AdminContainer from '../../shared/containers/application/AdminContainer';
+import DashboardContainer from '../../shared/containers/application/DashboardContainer';
+import DetaineeContainer from '../../shared/containers/application/DetaineeContainer';
+import FacilityContainer from '../../shared/containers/application/FacilityContainer';
+import HomeContainer from '../../shared/containers/application/HomeContainer';
+import ScreenContainer from '../../shared/containers/application/ScreenContainer';
+import ApiContainer from '../../shared/containers/developer/ApiContainer';
+import LoginContainer from '../../shared/containers/user/LoginContainer';
+import LogoutContainer from '../../shared/containers/user/LogoutContainer';
+import ProfileContainer from '../../shared/containers/user/ProfileContainer';
+import ResetPasswordContainer from '../../shared/containers/user/ResetPasswordContainer';
+import SignupAdminContainer from '../../shared/containers/user/SignupAdminContainer';
+import SignupUserContainer from '../../shared/containers/user/SignupUserContainer';
+import AdminComponent from '../views/pages/application/admin';
+import DashboardComponent from '../views/pages/application/dashboard';
+import DetaineeComponent from '../views/pages/application/detainee';
+import FacilityComponent from '../views/pages/application/facility';
+import HomeComponent from '../views/pages/application/home';
+import ScreenComponent from '../views/pages/application/screen';
+import ApiComponent from '../views/pages/developer/api';
 
 
 const Routes = () => (
   <Switch>
+    {/* APPLICATION */}
     <Route
       exact
-      path={PAGES.HOME.route}
+      path={PAGES.APPLICATION.HOME.route}
       render={props => (
         <HomeContainer {...props} Layout={HomeComponent}/>
       )}
     />
     <Route
-      path={PAGES.ABOUT.route}
+      path={PAGES.APPLICATION.DASHBOARD.route}
       render={props => (
-        <AboutContainer {...props} Layout={AboutComponent}/>
+        <DashboardContainer {...props} Layout={DashboardComponent}/>
+      )}
+    />
+    {/* ADMIN */}
+    <Route
+      path={PAGES.APPLICATION.FACILITY.route}
+      render={props => (
+        <FacilityContainer {...props} Layout={FacilityComponent}/>
       )}
     />
     <Route
-      path={AUTH.LOGIN.route}
+      path={PAGES.APPLICATION.SCREEN.route}
+      render={props => (
+        <ScreenContainer {...props} Layout={ScreenComponent}/>
+      )}
+    />
+    <Route
+      path={PAGES.APPLICATION.DETAINEE.route}
+      render={props => (
+        <DetaineeContainer {...props} Layout={DetaineeComponent}/>
+      )}
+    />
+    <Route
+      path={PAGES.APPLICATION.ADMIN.route}
+      render={props => (
+        <AdminContainer {...props} Layout={AdminComponent}/>
+      )}
+    />
+    <Route
+      path={PAGES.USER.LOGIN.route}
       render={props => (
         <LoginContainer {...props} Layout={LoginComponent}/>
       )}
     />
     <Route
-      path={AUTH.LOGOUT.route}
+      path={PAGES.USER.LOGOUT.route}
       render={props => (
         <LogoutContainer {...props} Layout={LogoutComponent}/>
       )}
     />
     <Route
-      path={AUTH.SIGNUP.route}
+      path={PAGES.USER.SIGNUP_USER.route}
       render={props => (
-        <SignupContainer {...props} Layout={SignupComponent}/>
+        <SignupUserContainer {...props} Layout={SignupUserComponent}/>
       )}
     />
     <Route
-      path={AUTH.RESET_PASSWORD.route}
+      path={PAGES.USER.SIGNUP_ADMIN.route}
+      render={props => (
+        <SignupAdminContainer {...props} Layout={SignupAdminComponent}/>
+      )}
+    />
+    <Route
+      path={PAGES.USER.RESET_PASSWORD.route}
       render={props => (
         <ResetPasswordContainer {...props} Layout={ResetPasswordComponent}/>
+      )}
+    />
+    <Route
+      path={PAGES.USER.PROFILE.route}
+      render={props => (
+        <ProfileContainer {...props} Layout={ProfileComponent}/>
+      )}
+    />
+    <Route
+      path={PAGES.DEVELOPER.API.route}
+      render={props => (
+        <ApiContainer {...props} Layout={ApiComponent}/>
       )}
     />
   </Switch>
