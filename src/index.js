@@ -14,7 +14,7 @@ const {persistor, store} = configureStore();
 
 const rootElement = document.getElementById('root');
 
-console.log('base: ', process.env.REACT_APP_REACT_WEB_EXPRESS_API_BASE_URL);
+console.log('api base url: ', process.env.REACT_APP_REACT_WEB_EXPRESS_API_BASE_URL);
 
 const Root = () => (
   <Provider store={store}>
