@@ -1,4 +1,3 @@
-import {css, StyleSheet} from 'aphrodite';
 import React, {Component} from 'react';
 import config from '../../../../../shared/config';
 
@@ -12,8 +11,19 @@ class GetDetainees extends Component {
   }
 
   getData() {
-    fetch(`${config.API_BASE_URL}/test`)
-    .then(response => console.log(response))
+    fetch(`${config.API_BASE_URL}/test`, {
+      method     : 'GET',
+      credentials: 'include',
+    })
+    .then((response) => {
+      return response.json();
+    })
+    .then((json) => {
+      console.log('foo', json)
+    })
+    .catch((err) => {
+      console.log(err)
+    })
   }
 
   componentDidMount() {
@@ -34,7 +44,3 @@ GetDetainees.propTypes = {};
 GetDetainees.defaultProps = {};
 
 export default GetDetainees;
-
-const styles = StyleSheet.create({
-  container: {},
-});

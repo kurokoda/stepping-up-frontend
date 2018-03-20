@@ -1,4 +1,3 @@
-import {css, StyleSheet} from 'aphrodite';
 import React, {Component} from 'react';
 import {Panel as BootstrapPanel} from 'react-bootstrap';
 
@@ -6,7 +5,7 @@ class Panel extends Component {
 
   constructor(props) {
     super(props);
-    const isOpen = props.closed ? false : true;
+    const isOpen = !props.closed;
     this.state   = {
       isOpen,
     }
@@ -15,7 +14,8 @@ class Panel extends Component {
   render() {
     return (
       <div className='col-sm-12 col-md-4'>
-        <BootstrapPanel onToggle={()=>{}}expanded={this.state.isOpen}>
+        <BootstrapPanel onToggle={() => {
+        }} expanded={this.state.isOpen}>
           <BootstrapPanel.Heading
             onClick={() => this.setState({
               isOpen: !this.state.isOpen,

@@ -1,6 +1,7 @@
 import {css, StyleSheet} from 'aphrodite';
 import React, {Component} from 'react';
 import {Panel} from 'react-bootstrap';
+import config from '../../../../../../shared/config';
 
 class User extends Component {
 
@@ -12,13 +13,34 @@ class User extends Component {
     }
   }
 
+  getData() {
+    fetch(`${config.API_BASE_URL}/test`, {
+      method     : 'GET',
+      credentials: 'include',
+    })
+    .then((response) => {
+      return response.json();
+    })
+    .then((json) => {
+      console.log('foo', json)
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+  }
+
+  componentDidMount() {
+    this.getData();
+  }
+
   render() {
     return (
       <div className={`container ${css(styles.container)}`}>
         <h6>USER DASHBOARD</h6>
         <div className='row'>
           <div className='col-sm-12 col-md-6'>
-            <Panel expanded={this.state.panelOneOpen}>
+            <Panel expanded={this.state.panelOneOpen} onToggle={() => {
+            }}>
               <Panel.Heading
                 onClick={() => this.setState({
                   panelOneOpen: !this.state.panelOneOpen,
@@ -29,7 +51,8 @@ class User extends Component {
             </Panel>
           </div>
           <div className='col-sm-12 col-md-6'>
-            <Panel expanded={this.state.panelTwoOpen}>
+            <Panel expanded={this.state.panelTwoOpen} onToggle={() => {
+            }}>
               <Panel.Heading
                 onClick={() => this.setState({
                   panelTwoOpen: !this.state.panelTwoOpen,

@@ -87,6 +87,7 @@ function createRequestPromise(actionCreator, getState, dispatch) {
         params = extractParams(action[CALL_API]);
         if (params.method === 'get' || params.method === 'delete') {
           superAgent[params.method](params.url)
+          .withCredentials()
           .query(params.query)
           .end((err, res) => {
             if (err) {
@@ -97,6 +98,7 @@ function createRequestPromise(actionCreator, getState, dispatch) {
           });
         } else {
           superAgent[params.method](params.url)
+          .withCredentials()
           .type('application/json')
           .accept('application/json')
           .send(params.body)
