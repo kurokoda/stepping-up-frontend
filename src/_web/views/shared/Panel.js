@@ -13,18 +13,16 @@ class Panel extends Component {
 
   render() {
     return (
-      <div className='col-sm-12 col-md-4'>
-        <BootstrapPanel onToggle={() => {
-        }} expanded={this.state.isOpen}>
-          <BootstrapPanel.Heading
-            onClick={() => this.setState({
-              isOpen: !this.state.isOpen,
-            })}>{this.props.title}</BootstrapPanel.Heading>
-          <BootstrapPanel.Collapse>
-            <BootstrapPanel.Body>{this.props.children}</BootstrapPanel.Body>
-          </BootstrapPanel.Collapse>
-        </BootstrapPanel>
-      </div>
+      <BootstrapPanel onToggle={() => {
+      }} expanded={this.state.isOpen}>
+        <BootstrapPanel.Heading
+          onClick={() => this.setState({
+            isOpen: !this.state.isOpen,
+          })}>{this.props.title}</BootstrapPanel.Heading>
+        <BootstrapPanel.Collapse>
+          <BootstrapPanel.Body>{this.props.children}</BootstrapPanel.Body>
+        </BootstrapPanel.Collapse>
+      </BootstrapPanel>
     );
   }
 }

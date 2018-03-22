@@ -8,26 +8,24 @@ import ResetPasswordComponent from '../../_web/views/pages/user/resetPassword';
 import SignupAdminComponent from '../../_web/views/pages/user/signupAdmin';
 import SignupUserComponent from '../../_web/views/pages/user/signupUser';
 import PAGES from '../../shared/constants/page';
-import AdminContainer from '../../shared/containers/application/AdminContainer';
 import DashboardContainer from '../../shared/containers/application/DashboardContainer';
 import DetaineeContainer from '../../shared/containers/application/DetaineeContainer';
 import FacilityContainer from '../../shared/containers/application/FacilityContainer';
 import HomeContainer from '../../shared/containers/application/HomeContainer';
 import ScreenContainer from '../../shared/containers/application/ScreenContainer';
-import ApiContainer from '../../shared/containers/developer/ApiContainer';
+import TestContainer from '../../shared/containers/developer/TestContainer';
 import LoginContainer from '../../shared/containers/user/LoginContainer';
 import LogoutContainer from '../../shared/containers/user/LogoutContainer';
 import ProfileContainer from '../../shared/containers/user/ProfileContainer';
 import ResetPasswordContainer from '../../shared/containers/user/ResetPasswordContainer';
 import SignupAdminContainer from '../../shared/containers/user/SignupAdminContainer';
 import SignupUserContainer from '../../shared/containers/user/SignupUserContainer';
-import AdminComponent from '../views/pages/application/admin';
 import DashboardComponent from '../views/pages/application/dashboard';
 import DetaineeComponent from '../views/pages/application/detainee';
 import FacilityComponent from '../views/pages/application/facility';
 import HomeComponent from '../views/pages/application/home';
 import ScreenComponent from '../views/pages/application/screen';
-import ApiComponent from '../views/pages/developer/api';
+import TestComponent from '../views/pages/developer/test';
 
 
 const Routes = () => (
@@ -63,12 +61,6 @@ const Routes = () => (
       path={PAGES.APPLICATION.DETAINEE.route}
       render={props => (
         <DetaineeContainer {...props} Layout={DetaineeComponent}/>
-      )}
-    />
-    <Route
-      path={PAGES.APPLICATION.ADMIN.route}
-      render={props => (
-        <AdminContainer {...props} Layout={AdminComponent}/>
       )}
     />
     <Route
@@ -108,9 +100,9 @@ const Routes = () => (
       )}
     />
     <Route
-      path={PAGES.DEVELOPER.API.route}
+      path={PAGES.DEVELOPER.TEST.route}
       render={props => (
-        <ApiContainer {...props} Layout={ApiComponent}/>
+        <TestContainer {...props} Layout={TestComponent}/>
       )}
     />
   </Switch>

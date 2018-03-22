@@ -7,7 +7,6 @@ export const QUESTION_PATCHED   = Symbol('QUESTION_PATCHED');
 export const QUESTION_DELETED   = Symbol('QUESTION_DELETED');
 
 export function getQuestions(afterSuccess, afterError) {
-  console.log('getQuestions')
   return {
     [CALL_API]: {
       method     : 'get',
@@ -20,7 +19,6 @@ export function getQuestions(afterSuccess, afterError) {
 }
 
 export function getQuestion(params, afterSuccess, afterError) {
-  console.log('getQuestion', params)
   return {
     [CALL_API]: {
       method     : 'get',
@@ -33,7 +31,6 @@ export function getQuestion(params, afterSuccess, afterError) {
 }
 
 export function postQuestion(params, afterSuccess, afterError) {
-  console.log('postQuestion', params)
   return {
     [CALL_API]: {
       method     : 'post',
@@ -47,7 +44,6 @@ export function postQuestion(params, afterSuccess, afterError) {
 }
 
 export function patchQuestion(params, afterSuccess, afterError) {
-  console.log('patchQuestion', params)
   return {
     [CALL_API]: {
       method     : 'patch',
@@ -61,7 +57,6 @@ export function patchQuestion(params, afterSuccess, afterError) {
 }
 
 export function deleteQuestion(params, afterSuccess, afterError) {
-  console.log('deleteQuestion', params)
   return {
     [CALL_API]: {
       method     : 'delete',

@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {deleteFacility, getFacilities, getFacility, patchFacility, postFacility} from '../../actions/facility';
+import {createFacility, deleteFacility, getFacilities, getFacility, updateFacility} from '../../actions/facilities';
 
 
 class FacilityContainer extends Component {
@@ -17,8 +17,8 @@ class FacilityContainer extends Component {
       getFacility   : this.props.getFacility,
       getFacilities : this.props.getFacilities,
       deleteFacility: this.props.deleteFacility,
-      patchFacility : this.props.patchFacility,
-      postFacility  : this.props.postFacility,
+      updateFacility: this.props.updateFacility,
+      createFacility: this.props.createFacility,
     };
 
     return (
@@ -33,8 +33,8 @@ const mapDispatchToProps = {
   getFacility,
   getFacilities,
   deleteFacility,
-  patchFacility,
-  postFacility,
+  createFacility,
+  updateFacility,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(FacilityContainer);

@@ -2,7 +2,6 @@ import {css, StyleSheet} from 'aphrodite';
 import React, {Component} from 'react';
 import {withRouter} from 'react-router-dom';
 import Panel from '../../../shared/Panel';
-import GetDetainees from './GetDetainees'
 
 class ApiView extends Component {
 
@@ -19,19 +18,28 @@ class ApiView extends Component {
       <div className={`container ${css(styles.container)}`}>
         <h6>ROOT DASHBOARD</h6>
         <div className='row'>
-          <Panel title='FOO' closed={true}>{<GetDetainees/>}</Panel>
-          <Panel title='FOO' closed={true}/>
-          <Panel title='FOO' closed={true}/>
+          <div className='col-sm-12 col-md-4'>
+            <Panel title='FOO' closed={true}/>
+          </div>
+          <div className='col-sm-12 col-md-4'>
+            <Panel title='FOO' closed={true}/>
+          </div>
+          <div className='col-sm-12 col-md-4'>
+            <Panel title='FOO' closed={true}/>
+          </div>
         </div>
         <div className='row'>
-          <Panel title='FOO' closed={true}/>
-          <Panel title='FOO' closed={true}/>
-          <Panel title='FOO' closed={true}/>
+          <div className='col-sm-12 col-md-6'>
+            <Panel title='FOO' closed={true}/>
+          </div>
+          <div className='col-sm-12 col-md-6'>
+            <Panel title='FOO' closed={true}/>
+          </div>
         </div>
         <div className='row'>
-          <Panel title='FOO' closed={true}/>
-          <Panel title='FOO' closed={true}/>
-          <Panel title='FOO' closed={true}/>
+          <div className='col-sm-12'>
+            <Panel title='FOO' closed={true}/>
+          </div>
         </div>
       </div>
     );

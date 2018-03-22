@@ -19,7 +19,6 @@ export function getScreens(afterSuccess, afterError) {
 }
 
 export function getScreen(params, afterSuccess, afterError) {
-  console.log('getScreen', params)
   return {
     [CALL_API]: {
       method     : 'get',
@@ -32,7 +31,6 @@ export function getScreen(params, afterSuccess, afterError) {
 }
 
 export function postScreen(params, afterSuccess, afterError) {
-  console.log('postScreen', params)
   return {
     [CALL_API]: {
       method     : 'post',
@@ -46,7 +44,6 @@ export function postScreen(params, afterSuccess, afterError) {
 }
 
 export function patchScreen(params, afterSuccess, afterError) {
-  console.log('patchScreen', params)
   return {
     [CALL_API]: {
       method     : 'patch',
@@ -60,7 +57,6 @@ export function patchScreen(params, afterSuccess, afterError) {
 }
 
 export function deleteScreen(params, afterSuccess, afterError) {
-  console.log('deleteScreen', params)
   return {
     [CALL_API]: {
       method     : 'delete',

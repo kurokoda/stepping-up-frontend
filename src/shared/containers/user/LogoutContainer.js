@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {logout} from '../../actions/user';
+import {logout} from '../../actions/users';
 
 class LogoutContainer extends Component {
   render() {

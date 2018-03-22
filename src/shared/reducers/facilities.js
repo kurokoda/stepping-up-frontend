@@ -1,19 +1,19 @@
 import Immutable from 'immutable';
-import * as ActionTypes from '../actions/detainees';
+import * as ActionTypes from '../actions/facilities';
 
 const defaultState = null;
 
 export default function (state = defaultState, action) {
   switch (action.type) {
-    case ActionTypes.DETAINEE_CREATED:
+    case ActionTypes.FACILITY_CREATED:
       return state;
-    case ActionTypes.DETAINEES_RECEIVED:
+    case ActionTypes.FACILITIES_RECEIVED:
       return Immutable.fromJS(action.response);
-    case ActionTypes.DETAINEE_RECEIVED:
+    case ActionTypes.FACILITY_RECEIVED:
       return Immutable.fromJS([action.response]);
-    case ActionTypes.DETAINEE_UPDATED:
+    case ActionTypes.FACILITY_UPDATED:
       return state;
-    case ActionTypes.DETAINEE_DELETED:
+    case ActionTypes.FACILITY_DELETED:
       return state;
     case ActionTypes.FLUSH:
       return null;

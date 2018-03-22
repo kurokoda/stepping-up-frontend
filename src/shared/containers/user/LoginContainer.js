@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {alertHide} from '../../actions/app';
-import {login} from '../../actions/user';
+import {login} from '../../actions/users';
 import USER from '../../constants/user';
 class LoginContainer extends Component {
   render() {

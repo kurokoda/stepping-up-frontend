@@ -18,8 +18,8 @@ class DetaineeView extends Component {
           <br/>
           <Button block onClick={() => this.props.getDetainees()}>Show All Detainees</Button>
           <Button block onClick={() => this.props.getDetainee({id: 1})}>Show Detainee</Button>
-          <Button block onClick={() => this.props.postDetainee({id: 1})}>Create Detainee</Button>
-          <Button block onClick={() => this.props.patchDetainee({id: 1})}>Edit Detainee</Button>
+          <Button block onClick={() => this.props.createDetainee({id: 1})}>Create Detainee</Button>
+          <Button block onClick={() => this.props.updateDetainee({id: 1})}>Update Detainee</Button>
           <Button block bsStyle='danger' onClick={() => this.props.deleteDetainee({id: 1})}>Delete Detainee</Button>
         </div>
       </section>

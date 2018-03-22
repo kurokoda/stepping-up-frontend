@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {deleteDetainee, getDetainee, getDetainees, patchDetainee, postDetainee} from '../../actions/detainees';
+import {deleteDetainee, getDetainee, getDetainees, updateDetainee, createDetainee} from '../../actions/detainees';
 
 
 class DetaineeContainer extends Component {
@@ -17,8 +17,8 @@ class DetaineeContainer extends Component {
       getDetainee   : this.props.getDetainee,
       getDetainees  : this.props.getDetainees,
       deleteDetainee: this.props.deleteDetainee,
-      patchDetainee : this.props.patchDetainee,
-      postDetainee  : this.props.postDetainee,
+      updateDetainee : this.props.updateDetainee,
+      createDetainee  : this.props.createDetainee,
     };
 
     return (
@@ -33,8 +33,8 @@ const mapDispatchToProps = {
   getDetainee,
   getDetainees,
   deleteDetainee,
-  patchDetainee,
-  postDetainee,
+  updateDetainee,
+  createDetainee,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(DetaineeContainer);

@@ -1,7 +1,6 @@
 import {css, StyleSheet} from 'aphrodite';
 import React, {Component} from 'react';
 import {Panel} from 'react-bootstrap';
-import config from '../../../../../../shared/config';
 
 class User extends Component {
 
@@ -11,26 +10,6 @@ class User extends Component {
       panelOneOpen: true,
       panelTwoOpen: true,
     }
-  }
-
-  getData() {
-    fetch(`${config.API_BASE_URL}/test`, {
-      method     : 'GET',
-      credentials: 'include',
-    })
-    .then((response) => {
-      return response.json();
-    })
-    .then((json) => {
-      console.log('foo', json)
-    })
-    .catch((err) => {
-      console.log(err)
-    })
-  }
-
-  componentDidMount() {
-    this.getData();
   }
 
   render() {

@@ -22,7 +22,7 @@ class SignupUserView extends Component {
       Validation.set('email', 'Email', required, minLength(3)),
       Validation.set('password', 'Password', required),
       Validation.set('passwordConfirm', 'Password Confirm', required, mustMatch('password', 'Password')),
-      Validation.set('facility', 'Password Confirm', required),
+      Validation.set('facilityID', 'Facility ID', required),
     ];
 
     this.state = {
@@ -34,7 +34,7 @@ class SignupUserView extends Component {
       email           : 'indigo.personal@gmail.com',
       password        : 'password',
       passwordConfirm : 'password',
-      facility        : '11111111',
+      facilityID      : '11111111',
     };
   }
 
@@ -85,12 +85,12 @@ class SignupUserView extends Component {
                          errorText={this.getErrorFor('passwordConfirm')}
                          label='Confirm Password'
                          id='passwordConfirm'/>
-          <TextInput value={this.state.facility}
+          <TextInput value={this.state.facilityID}
                      onChange={this.onChange}
                      showError={this.state.showErrors}
-                     errorText={this.getErrorFor('facility')}
+                     errorText={this.getErrorFor('facilityID')}
                      label='Facility code'
-                     id='facility'/>
+                     id='facilityID'/>
           <p>
             <Button
               className="btn-block"
@@ -125,12 +125,12 @@ class SignupUserView extends Component {
     if (!_.isEmpty(this.state.validationErrors)) return null;
     this.props.onSubmit(
       {
-        firstName: this.state.firstName,
-        lastName : this.state.lastName,
-        username : this.state.username,
-        email    : this.state.email,
-        password : this.state.password,
-        facility : this.state.facility,
+        firstName : this.state.firstName,
+        lastName  : this.state.lastName,
+        username  : this.state.username,
+        email     : this.state.email,
+        password  : this.state.password,
+        facilityID: this.state.facilityID,
       }
     );
   }

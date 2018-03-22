@@ -1,18 +1,33 @@
-import {CALL_API} from '../../middlewares/api';
+import {CALL_API, CHAIN_API} from '../../middlewares/api';
 
+export const DETAINEE_CREATED   = Symbol('DETAINEE_CREATED');
 export const DETAINEES_RECEIVED = Symbol('DETAINEES_RECEIVED');
 export const DETAINEE_RECEIVED  = Symbol('DETAINEE_RECEIVED');
-export const DETAINEE_POSTED    = Symbol('DETAINEE_POSTED');
-export const DETAINEE_PATCHED   = Symbol('DETAINEE_PATCHED');
+export const DETAINEE_UPDATED   = Symbol('DETAINEE_UPDATED');
 export const DETAINEE_DELETED   = Symbol('DETAINEE_DELETED');
 export const FLUSH              = Symbol('FLUSH');
 
+const schema = 'detainee';
+const path   = '/api/detainee';
+
+export function createDetainee(params, afterSuccess, afterError) {
+  return {
+    [CALL_API]: {
+      body       : params,
+      method     : 'post',
+      path       : `${path}`,
+      successType: DETAINEE_CREATED,
+      afterSuccess,
+      afterError
+    }
+  };
+}
 
 export function getDetainees(afterSuccess, afterError) {
   return {
     [CALL_API]: {
       method     : 'get',
-      path       : '/api/detainee',
+      path       : `${path}`,
       successType: DETAINEES_RECEIVED,
       afterSuccess,
       afterError
@@ -21,11 +36,10 @@ export function getDetainees(afterSuccess, afterError) {
 }
 
 export function getDetainee(params, afterSuccess, afterError) {
-  console.log('getDetainee', params)
   return {
     [CALL_API]: {
       method     : 'get',
-      path       : `/api/detainee/${params.id}`,
+      path       : `${path}/${params.detaineeID}`,
       successType: DETAINEE_RECEIVED,
       afterSuccess,
       afterError
@@ -33,28 +47,13 @@ export function getDetainee(params, afterSuccess, afterError) {
   };
 }
 
-export function postDetainee(params, afterSuccess, afterError) {
-  console.log('postDetainee', params)
+export function updateDetainee(params, afterSuccess, afterError) {
   return {
     [CALL_API]: {
-      method     : 'post',
       body       : params,
-      path       : `/api/detainee`,
-      successType: DETAINEE_POSTED,
-      afterSuccess,
-      afterError
-    }
-  };
-}
-
-export function patchDetainee(params, afterSuccess, afterError) {
-  console.log('patchDetainee', params)
-  return {
-    [CALL_API]: {
       method     : 'patch',
-      body       : params,
-      path       : `/api/detainee/${params.id}`,
-      successType: DETAINEE_PATCHED,
+      path       : `${path}/${params.detaineeID}`,
+      successType: DETAINEE_UPDATED,
       afterSuccess,
       afterError
     }
@@ -62,14 +61,61 @@ export function patchDetainee(params, afterSuccess, afterError) {
 }
 
 export function deleteDetainee(params, afterSuccess, afterError) {
-  console.log('deleteDetainee', params)
   return {
     [CALL_API]: {
       method     : 'delete',
-      path       : `/api/detainee/${params.id}`,
+      path       : `${path}/${params.detaineeID}`,
       successType: DETAINEE_DELETED,
       afterSuccess,
       afterError
     }
+  };
+}
+
+// Tests -----------------------------------------------------------------------------
+
+const getDetaineeData = () => {
+  return {
+    facilityID: String(Math.floor(Math.random() * 3) + 100),
+    detaineeID: String(Math.floor(Math.random() * 999) + 1000),
+    gender    : 'male',
+    firstName : 'Joe',
+    lastName  : 'Detainee',
+  }
+}
+
+export function testDetaineeActions() {
+  const detainee = getDetaineeData();
+  return {
+    [CHAIN_API]: [
+      () => {
+        return createDetainee(detainee, () => {
+          console.log(`Create ${schema}: success`)
+        }, () => {
+          console.error(`Create ${schema}: failure - ${detainee}`)
+        });
+      },
+      () => {
+        return getDetainees(() => {
+          console.log(`Get all ${schema}: success`)
+        }, () => {
+          console.error(`Get all ${schema}: failure - ${detainee}`)
+        });
+      },
+      () => {
+        return getDetainee(detainee, () => {
+          console.log(`Get ${schema}: success`)
+        }, () => {
+          console.error(`Get ${schema}: failure - ${detainee}`)
+        });
+      },
+      () => {
+        return deleteDetainee(detainee, () => {
+          console.log(`Delete ${schema}: success`)
+        }, () => {
+          console.error(`Delete ${schema}: failure - ${detainee}`)
+        });
+      }
+    ]
   };
 }

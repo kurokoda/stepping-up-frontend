@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 import {Alert} from 'react-bootstrap';
 import {connect} from 'react-redux';
 import {withRouter} from 'react-router-dom';
-import {logout} from '../../../../shared/actions/user';
+import {logout} from '../../../../shared/actions/users';
 import Header from '../../layout/header';
 
 class HeaderContainer extends Component {

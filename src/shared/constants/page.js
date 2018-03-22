@@ -1,8 +1,8 @@
 const PAGES = {
   DEVELOPER  : {
-    API: {
-      key  : 'API',
-      label: 'api',
+    TEST: {
+      key  : 'TEST',
+      label: 'test',
     },
   },
   APPLICATION: {
@@ -25,11 +25,6 @@ const PAGES = {
       key  : 'SCREEN',
       label: 'screen',
       route: '/screen',
-    },
-    ADMIN    : {
-      key  : 'ADMIN',
-      label: 'admin',
-      route: '/admin',
     },
     DETAINEE : {
       key  : 'DETAINEE',
