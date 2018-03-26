@@ -1,7 +1,7 @@
 import Promise from 'bluebird';
 import {camelizeKeys} from 'humps';
 import superAgent from 'superagent';
-import config from '../../shared/config';
+import config from '../../config';
 
 export const CALL_API  = Symbol('CALL_API');
 export const CHAIN_API = Symbol('CHAIN_API');

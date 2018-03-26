@@ -2,7 +2,7 @@ import createReactClass from 'create-react-class';
 import Immutable from 'immutable';
 import React from 'react';
 import * as AppActionType from '../actions/app';
-import * as UserActionType from '../actions/users';
+import * as UserActionType from '../actions/user';
 
 
 const Content = createReactClass({

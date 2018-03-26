@@ -11,6 +11,9 @@ const schema = 'detainee';
 const path   = '/api/detainee';
 
 export function createDetainee(params, afterSuccess, afterError) {
+  console.log();
+  console.log('action:detainee:createDetainee')
+  console.log();
   return {
     [CALL_API]: {
       body       : params,
@@ -24,6 +27,9 @@ export function createDetainee(params, afterSuccess, afterError) {
 }
 
 export function getDetainees(afterSuccess, afterError) {
+  console.log();
+  console.log('action:detainee:getDetainees');
+  console.log();
   return {
     [CALL_API]: {
       method     : 'get',
@@ -36,6 +42,9 @@ export function getDetainees(afterSuccess, afterError) {
 }
 
 export function getDetainee(params, afterSuccess, afterError) {
+  console.log();
+  console.log('action:detainee:getDetainee');
+  console.log();
   return {
     [CALL_API]: {
       method     : 'get',
@@ -48,6 +57,9 @@ export function getDetainee(params, afterSuccess, afterError) {
 }
 
 export function updateDetainee(params, afterSuccess, afterError) {
+  console.log();
+  console.log('action:detainee:updateDetainee');
+  console.log();
   return {
     [CALL_API]: {
       body       : params,
@@ -61,10 +73,13 @@ export function updateDetainee(params, afterSuccess, afterError) {
 }
 
 export function deleteDetainee(params, afterSuccess, afterError) {
+  console.log();
+  console.log('action:detainee:deleteDetainee');
+  console.log();
   return {
     [CALL_API]: {
       method     : 'delete',
-      path       : `${path}/${params.detaineeID}`,
+      path       : `/api/detainee/${params.detaineeID}`,
       successType: DETAINEE_DELETED,
       afterSuccess,
       afterError

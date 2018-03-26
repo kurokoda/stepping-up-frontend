@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {createFacility, deleteFacility, getFacilities, getFacility, updateFacility} from '../../actions/facilities';
+import {createFacility, deleteFacility, getFacilities, getFacility, updateFacility} from '../../actions/facility';
 
 
 class FacilityContainer extends Component {

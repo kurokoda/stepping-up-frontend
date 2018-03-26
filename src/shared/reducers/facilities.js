@@ -1,5 +1,5 @@
 import Immutable from 'immutable';
-import * as ActionTypes from '../actions/facilities';
+import * as ActionTypes from '../actions/facility';
 
 const defaultState = null;
 

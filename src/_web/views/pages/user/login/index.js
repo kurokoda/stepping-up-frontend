@@ -23,7 +23,7 @@ class LoginView extends Component {
     this.state = {
       showErrors      : false,
       validationErrors: {},
-      email           : 'userthree@gmail.com',
+      email           : 'one@admin.com',
       password        : 'password',
     };
   }

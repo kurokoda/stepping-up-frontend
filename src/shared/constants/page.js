@@ -1,10 +1,4 @@
 const PAGES = {
-  DEVELOPER  : {
-    TEST: {
-      key  : 'TEST',
-      label: 'test',
-    },
-  },
   APPLICATION: {
     HOME     : {
       key  : 'HOME',

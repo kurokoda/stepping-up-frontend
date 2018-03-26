@@ -1,6 +1,5 @@
 import {css, StyleSheet} from 'aphrodite';
 import React, {Component} from 'react';
-import {Button} from 'react-bootstrap';
 import {withRouter} from 'react-router-dom';
 
 class DetaineeView extends Component {
@@ -15,12 +14,6 @@ class DetaineeView extends Component {
       <section className={css(styles.container)}>
         <div className={css(styles.content)}>
           <h2 className={css(styles.text)}>{textString}</h2>
-          <br/>
-          <Button block onClick={() => this.props.getDetainees()}>Show All Detainees</Button>
-          <Button block onClick={() => this.props.getDetainee({id: 1})}>Show Detainee</Button>
-          <Button block onClick={() => this.props.createDetainee({id: 1})}>Create Detainee</Button>
-          <Button block onClick={() => this.props.updateDetainee({id: 1})}>Update Detainee</Button>
-          <Button block bsStyle='danger' onClick={() => this.props.deleteDetainee({id: 1})}>Delete Detainee</Button>
         </div>
       </section>
     );

@@ -13,7 +13,6 @@ import DetaineeContainer from '../../shared/containers/application/DetaineeConta
 import FacilityContainer from '../../shared/containers/application/FacilityContainer';
 import HomeContainer from '../../shared/containers/application/HomeContainer';
 import ScreenContainer from '../../shared/containers/application/ScreenContainer';
-import TestContainer from '../../shared/containers/developer/TestContainer';
 import LoginContainer from '../../shared/containers/user/LoginContainer';
 import LogoutContainer from '../../shared/containers/user/LogoutContainer';
 import ProfileContainer from '../../shared/containers/user/ProfileContainer';
@@ -25,7 +24,6 @@ import DetaineeComponent from '../views/pages/application/detainee';
 import FacilityComponent from '../views/pages/application/facility';
 import HomeComponent from '../views/pages/application/home';
 import ScreenComponent from '../views/pages/application/screen';
-import TestComponent from '../views/pages/developer/test';
 
 
 const Routes = () => (
@@ -97,12 +95,6 @@ const Routes = () => (
       path={PAGES.USER.PROFILE.route}
       render={props => (
         <ProfileContainer {...props} Layout={ProfileComponent}/>
-      )}
-    />
-    <Route
-      path={PAGES.DEVELOPER.TEST.route}
-      render={props => (
-        <TestContainer {...props} Layout={TestComponent}/>
       )}
     />
   </Switch>

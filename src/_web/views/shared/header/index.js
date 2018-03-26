@@ -16,7 +16,7 @@ const Header = ({...props}) => {
     props.history.push(PAGES.USER.LOGIN.route)
   };
 
-  const onLogoutError = () => console.log('logout action error');
+  const onLogoutError = () => {};
 
   const PageLinks = () => {
     if (!props.user) return (

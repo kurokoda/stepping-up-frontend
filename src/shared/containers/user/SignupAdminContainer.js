@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {alertShow} from '../../actions/app';
-import {signupUser} from '../../actions/users';
+import {signupUser} from '../../actions/user';
 
 class SignupAdminContainer extends Component {
   render() {
