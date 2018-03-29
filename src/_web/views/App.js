@@ -3,14 +3,39 @@ import React, {Component} from 'react';
 import {Alert} from 'react-bootstrap';
 import {connect} from 'react-redux';
 import {withRouter} from 'react-router-dom';
+import config from '../../config';
+import {modalHide} from '../../shared/actions/app';
 import {logout, synchronizeUserSession} from '../../shared/actions/user';
 import ActivityMonitor from '../../shared/monitor/ActivityMonitor';
 import Footer from './shared/footer';
 import Header from './shared/header';
+import Modal from './shared/modal';
+
 
 class App extends Component {
 
+  constructor(props) {
+    super(props);
+    console.log('A pile of charred monkeys');
+  }
+
   onRouteChanged() {
+    const test = () => {
+      console.log('test');
+      return fetch(`${config.API_BASE_URL}/test`, {
+        credentials: 'include', // include, same-origin, *omit
+        method     : 'GET', // *GET, POST, PUT, DELETE, etc.
+        mode       : 'cors', // no-cors, cors, *same-origin
+      })
+      .then(response => response)
+    };
+
+    test()
+    .then(test)
+    .then(() => {
+      console.log('DONE')
+    });
+    //
     this.props.user &&
     this.props.synchronizeUserSession(
       this.props.user,
@@ -40,7 +65,6 @@ class App extends Component {
       }
       this.inactivityTimeout -= 1;
       if (!this.inactivityTimeout) {
-        debugger
         this.props.logout();
       }
     }
@@ -49,8 +73,7 @@ class App extends Component {
   // React -------------------------------------------------------------
 
   componentDidMount() {
-    this.inactivityTimeout = 60
-    window.setInterval(() => console.log(this.inactivityTimeout), 1000);
+    this.inactivityTimeout = 300;
     this.onRouteChanged();
   }
 
@@ -62,9 +85,12 @@ class App extends Component {
 
   render() {
     const alert = this.props.app.get('alert');
+    const modal = this.props.app.get('modal');
     return (
       <section id='app-container' className={css(styles.container)}>
-        {/*<Modal config={this.props.app.get('modal')}/>*/}
+        { modal && (
+          <Modal close={this.props.modalHide} config={modal}/>
+        )}
         <div id='header-container' className={css(styles.header)}>
           <Header
             logout={this.props.logout}
@@ -107,6 +133,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = {
   logout,
+  modalHide,
   synchronizeUserSession,
 };
 

@@ -33,10 +33,14 @@ class DetaineeTable extends Component {
                 <td>{detainee.get('lastName')}</td>
                 <td>{detainee.get('detaineeID')}</td>
                 <td>
-                  <Button block bsSize="small" bsStyle="success">Screen</Button>
+                  <Button block bsSize="small" bsStyle="info">Edit</Button>
                 </td>
                 <td>
-                  <Button block bsSize="small" bsStyle="info">Edit</Button>
+                  <Button
+                    block
+                    bsSize="small"
+                    bsStyle="success"
+                    onClick={()=>{this.props.onScreenButtonClick(detainee.get('detaineeID'))}}>Screen</Button>
                 </td>
               </tr>
             )

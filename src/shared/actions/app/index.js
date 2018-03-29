@@ -5,7 +5,7 @@ export const ALERT_HIDE = Symbol('ALERT_HIDE');
 
 export function modalShow(params) {
   const type    = MODAL_SHOW;
-  const payload = params.payload;
+  const payload = params.config;
   return {type, payload};
 }
 

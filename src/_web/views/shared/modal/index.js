@@ -1,10 +1,12 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import {Button} from 'react-bootstrap';
 import Modal from 'react-modal';
 
 const ModalComponent = ({...props}) => {
 
-  const Content = props.config.get('Content')
+  const Content = props.config.get('Content');
+  const title   = props.config.get('title');
 
   return (
     <div>
@@ -13,11 +15,18 @@ const ModalComponent = ({...props}) => {
         onAfterOpen={props.config.get('onAfterOpen')}
         onRequestClose={props.config.get('onRequestClose')}
         style={props.config.get('styles') || styles}
-        contentLabel={props.config.get('contentLabel')}
-      >
-        <h2>Hello</h2>
-        <button onClick={props.close}>close</button>
+        contentLabel={props.config.get('contentLabel')}>
+        { title && (
+          <h2>{title}</h2>
+        )}
         <Content/>
+        <Button
+          block
+          bsSize="small"
+          bsStyle="info"
+          onClick={props.close}>
+          Close
+        </Button>
       </Modal>
     </div>
   );
