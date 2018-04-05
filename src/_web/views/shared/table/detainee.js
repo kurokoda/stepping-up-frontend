@@ -70,7 +70,7 @@ class DetaineeTable extends Component {
           {console.log('detaineesTotal', detaineesTotal)}
           <Pagination
             page={1}
-            buttonCount={7}
+            buttonCount={5}
             itemsTotal={detaineesTotal}
             displayCount={displayCount}
             onButtonClick={this.onPaginationButtonClick.bind(this)}/>

@@ -6,7 +6,7 @@ const PieChart = (props) => {
   return (
     <svg viewBox={`0 0 ${props.width} ${props.height}`}>
       <VictoryPie
-        colorScale={"warm"}
+        colorScale={props.theme}
         standalone={false}
         width={400} height={400}
         data={props.data}

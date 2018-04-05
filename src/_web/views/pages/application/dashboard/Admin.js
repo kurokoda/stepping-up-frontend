@@ -4,6 +4,7 @@ import {withRouter} from 'react-router-dom';
 import PERSON from '../../../../../shared/constants/person';
 import BarChart from '../../../shared/chart/bar';
 import PieChart from '../../../shared/chart/pie';
+import StackChart from '../../../shared/chart/stack';
 import Panel from '../../../shared/Panel';
 import CounselorTable from '../../../shared/table/counselor';
 import DetaineeTable from '../../../shared/table/detainee';
@@ -14,6 +15,9 @@ import Tabs from '../../../shared/tabs';
 const pieData = [
   {x: 1, y: 120}, {x: 2, y: 150}, {x: 3, y: 75}
 ];
+
+const CHART_THEME = 'green';
+
 
 class AdminDashboard extends Component {
 
@@ -28,7 +32,7 @@ class AdminDashboard extends Component {
   render() {
     return (
       <div className={`container ${css(styles.container)}`}>
-        <h6>ROOT DASHBOARD</h6>
+        <h3>ADMIN DASHBOARD</h3>
         <div className='row'>
           <div className='col-sm-12 col-md-4'>
             <Panel title='FOO' closed={true}/>
@@ -62,18 +66,28 @@ class AdminDashboard extends Component {
           </div>
         </div>
         <div className='row'>
-          <div className='col-sm-12 col-md-6'>
-            <Panel title='FOO' closed={false}>
+          <div className='col-sm-6 col-md-4'>
+            <Panel title='Screening Status Ratio' closed={false}>
               <PieChart
+                theme={CHART_THEME}
                 width='400'
                 height='400'
                 data={pieData}
               />
             </Panel>
           </div>
-          <div className='col-sm-12 col-md-6'>
-            <Panel title='FOO' closed={false}>
-              <BarChart/>
+          <div className='col-sm-6 col-md-4'>
+            <Panel title='Quarterly Screening Status Ratio ' closed={false}>
+              <BarChart
+                theme={CHART_THEME}
+              />
+            </Panel>
+          </div>
+          <div className='col-sm-6 col-md-4'>
+            <Panel title='Counselor Meetings' closed={false}>
+              <StackChart
+                theme={CHART_THEME}
+              />
             </Panel>
           </div>
         </div>

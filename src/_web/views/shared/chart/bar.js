@@ -45,7 +45,7 @@ const BarChart = (props) => {
         tickFormat={(x) => (`$${x / 1000}k`)}
       />
       <VictoryStack
-        colorScale={"warm"}
+        colorScale={props.theme}
       >
         <VictoryBar
           data={data2012}
