@@ -3,7 +3,6 @@ import React, {Component} from 'react';
 import {Alert} from 'react-bootstrap';
 import {connect} from 'react-redux';
 import {withRouter} from 'react-router-dom';
-import config from '../../config';
 import {modalHide} from '../../shared/actions/app';
 import {logout, synchronizeUserSession} from '../../shared/actions/user';
 import ActivityMonitor from '../../shared/monitor/ActivityMonitor';
@@ -14,28 +13,7 @@ import Modal from './shared/modal';
 
 class App extends Component {
 
-  constructor(props) {
-    super(props);
-    console.log('A pile of charred monkeys');
-  }
-
   onRouteChanged() {
-    const test = () => {
-      console.log('test');
-      return fetch(`${config.API_BASE_URL}/test`, {
-        credentials: 'include', // include, same-origin, *omit
-        method     : 'GET', // *GET, POST, PUT, DELETE, etc.
-        mode       : 'cors', // no-cors, cors, *same-origin
-      })
-      .then(response => response)
-    };
-
-    test()
-    .then(test)
-    .then(() => {
-      console.log('DONE')
-    });
-    //
     this.props.user &&
     this.props.synchronizeUserSession(
       this.props.user,
@@ -45,7 +23,6 @@ class App extends Component {
   }
 
   onSyncSuccess() {
-    console.log('onSyncSuccess');
   }
 
   onSyncError() {
@@ -73,7 +50,7 @@ class App extends Component {
   // React -------------------------------------------------------------
 
   componentDidMount() {
-    this.inactivityTimeout = 300;
+    this.inactivityTimeout = 30 * 60;
     this.onRouteChanged();
   }
 

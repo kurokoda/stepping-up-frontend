@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {alertHide} from '../../actions/app';
 import {login} from '../../actions/user';
-import USER from '../../constants/user';
+import PERSON from '../../constants/person';
 class LoginContainer extends Component {
   render() {
     const {Layout} = this.props;
@@ -27,11 +27,11 @@ class LoginContainer extends Component {
   onLoginSuccess() {
     let userType;
     if (this.props.user.get('admin')) {
-      userType = USER.TYPE.ADMIN;
+      userType = PERSON.ADMIN.type;
     } else if (this.props.user.get('counselor')) {
-      userType = USER.TYPE.COUNSELOR;
+      userType = PERSON.COUNSELOR.type;
     } else {
-      userType = USER.TYPE.USER;
+      userType = PERSON.USER.type;
     }
     this.props.history.push(`/dashboard/${userType}`);
   }

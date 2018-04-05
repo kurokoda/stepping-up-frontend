@@ -1,5 +1,4 @@
 import Immutable from 'immutable';
-import React from 'react';
 import * as AppActionType from '../actions/app';
 import * as UserActionType from '../actions/user';
 

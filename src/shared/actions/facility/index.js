@@ -123,6 +123,45 @@ export function deleteFacility(params, afterSuccess, afterError) {
   };
 }
 
+export function getUsersFromFacilityByRange(params, afterSuccess, afterError) {
+  return {
+    [CALL_API]: {
+      method     : 'get',
+      path       : `/api/facility/users`,
+      query      : params,
+      successType: FACILITY_USERS_RECEIVED,
+      afterSuccess,
+      afterError
+    }
+  };
+}
+
+export function getCounselorsFromFacilityByRange(params, afterSuccess, afterError) {
+  return {
+    [CALL_API]: {
+      method     : 'get',
+      path       : `/api/facility/counselors`,
+      query      : params,
+      successType: FACILITY_COUNSELORS_RECEIVED,
+      afterSuccess,
+      afterError
+    }
+  };
+}
+
+export function getDetaineesFromFacilityByRange(params, afterSuccess, afterError) {
+  return {
+    [CALL_API]: {
+      method     : 'get',
+      path       : `/api/facility/detainees`,
+      query      : params,
+      successType: FACILITY_DETAINEES_RECEIVED,
+      afterSuccess,
+      afterError
+    }
+  };
+}
+
 // Tests -----------------------------------------------------------------------------
 
 const getFacilityData = () => {

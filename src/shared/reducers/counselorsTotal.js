@@ -5,8 +5,8 @@ const defaultState = [];
 
 export default function (state = defaultState, action) {
   switch (action.type) {
-    case FacilityActionTypes.FACILITY_DETAINEES_RECEIVED:
-      return Immutable.fromJS(action.response.detainees);
+    case FacilityActionTypes.FACILITY_COUNSELORS_RECEIVED:
+      return Immutable.fromJS(action.response.counselorsTotal);
     default:
       return state;
   }

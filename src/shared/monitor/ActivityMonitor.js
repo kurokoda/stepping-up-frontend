@@ -1,9 +1,8 @@
 import {throttle} from 'lodash';
 import PropTypes from 'prop-types';
-import React, {Component} from 'react';
+import React from 'react';
 
-
-class ActivityMonitor extends Component {
+class ActivityMonitor extends React.Component {
 
   constructor(props) {
     super(props);

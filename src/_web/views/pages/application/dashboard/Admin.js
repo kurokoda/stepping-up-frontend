@@ -1,10 +1,15 @@
 import {css, StyleSheet} from 'aphrodite';
 import React, {Component} from 'react';
 import {withRouter} from 'react-router-dom';
+import PERSON from '../../../../../shared/constants/person';
 import BarChart from '../../../shared/chart/bar';
 import PieChart from '../../../shared/chart/pie';
 import Panel from '../../../shared/Panel';
+import CounselorTable from '../../../shared/table/counselor';
 import DetaineeTable from '../../../shared/table/detainee';
+import UserTable from '../../../shared/table/user';
+
+import Tabs from '../../../shared/tabs';
 
 const pieData = [
   {x: 1, y: 120}, {x: 2, y: 150}, {x: 3, y: 75}
@@ -19,7 +24,6 @@ class AdminDashboard extends Component {
       panelTwoOpen: true,
     }
   }
-
 
   render() {
     return (
@@ -75,11 +79,25 @@ class AdminDashboard extends Component {
         </div>
         <div className='row'>
           <div className='col-sm-12'>
-            <Panel title='Detainees'>
-              <DetaineeTable
-                detainees={this.props.detainees}
-                onScreenButtonClick={this.props.onScreenButtonClick}
-              />
+            <Panel title='Personnel'>
+              <Tabs data={[PERSON.DETAINEE, PERSON.USER, PERSON.COUNSELOR]}
+                    content={[
+                      <DetaineeTable
+                        detainees={this.props.detainees}
+                        getDetainees={this.props.getDetainees}
+                        getDetaineesTotal={this.props.getDetaineesTotal}
+                        onScreenButtonClick={this.props.onScreenButtonClick}/>,
+                      <UserTable
+                        users={this.props.users}
+                        getUsers={this.props.getUsers}
+                        getUsersTotal={this.props.getUsersTotal}
+                        onScreenButtonClick={this.props.onScreenButtonClick}/>,
+                      <CounselorTable
+                        counselors={this.props.counselors}
+                        getCounselors={this.props.getCounselors}
+                        getCounselorsTotal={this.props.getCounselorsTotal}
+                        onScreenButtonClick={this.props.onScreenButtonClick}/>,
+                    ]}/>
             </Panel>
           </div>
         </div>
